@@ -1,0 +1,57 @@
+<form [formGroup]="addForm">
+    <table>
+        <tr>
+    <input type="text"formControlName="fn">
+    <span style="color:red" *ngIf="addForm.get('fn').hasError('required')
+    && addForm.get('fn').touched">Need to fill</span>
+    <span style="color: orange" *ngIf="addForm.get('fn').hasError('minlength')
+    && addForm.get('fn').touched">Min 5 characters</span>
+    <br>
+</tr>
+<tr>
+    <textarea formControlName="desc"></textarea>
+    <span style="color: orange" *ngIf="addForm.get('desc').hasError('minlength')
+    && addForm.get('fn').touched">Min 10 characters</span>
+    <br>
+</tr>
+<tr>
+    <input type="text"formControlName="type">
+    <span style="color:red" *ngIf="addForm.get('type').hasError('required')
+    && addForm.get('fn').touched">Need to fill</span>
+    <span style="color: orange" *ngIf="addForm.get('type').hasError('minlength')
+    && addForm.get('fn').touched">Min 10 characters</span>
+    <span style="color: purple" *ngIf="addForm.get('type').hasError('maxlength')
+    && addForm.get('fn').touched">Max 20 characters</span>
+    <br>
+</tr>
+<!--<tr>
+    <div formArrayName="users">
+    <div *ngFor="let c of addForm.controls['users']['controls'];let i = index">
+        <input type="text" [formControlName]="i">
+    </div>
+    </div>
+</tr>-->
+
+<div formArrayName="users">
+    <div *ngFor="let c of addForm.controls['users']['controls'];
+    let i = index" [formGroupName]="i">
+        <input type="text" formControlName="name"(blur)="assign(i)">
+        <!-- blur means if we navigate away then function will happen -->
+        <input type="text" formControlName="Marks" (keyup)="assign(i)">
+        <!-- key up means if key in a value then function will happen -->
+        <input type="text" formControlName="branch">
+        <button (click)="removeUser(i)">Remove element</button>
+        <!-- <button (click)="assign(i)">Assign branch value</button> -->
+    </div>
+</div>
+    
+    <button (click)="addval()" [disabled]="!addForm.valid">Click</button><br>
+    <button (click)="fnval()">fn val</button><br>
+    <button (click)="changeval()">change val</button><br>
+    <button (click)="resetForm()">Reset</button><br>
+    <button (click)="formstate()">Form State</button><br>
+    <button (click)="clickUser()">User val</button><br>
+    <button (click)="addUser()">Add form elements</button><br>
+    
+</table>
+</form>

@@ -1,0 +1,56 @@
+<h1>my angular project</h1>
+
+<div *ngIf="msg;then update_msg;else error_msg"> <!--if msg = false it wont get displayed and else will display-->
+    <!--if msg = true then update msg will send-->
+    This has been displayed successfully
+</div>
+
+<ng-template #error_msg> <!--Tag ng template to error_msg-->
+    There was an error in NGIF
+</ng-template>
+
+<ng-template #update_msg>
+    This is updated message
+</ng-template>
+
+<h2>{{print1}}</h2><!--string interpolation-->
+
+<div *ngFor="let a of context">
+    <h2>{{a.id}}{{a.fn}}{{a.ln}}</h2>
+
+</div>
+
+<ul>
+    <li *ngFor="let a of context; index as i;first as f">
+        <div *ngIf="f">
+            First element
+        </div>
+        {{i}} {{a.id}} {{a.fn}}
+    </li>
+</ul>
+
+<table>
+    <tr>
+      <th>Index</th>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+    <ng-container *ngFor="let a of context; index as i; even as e; odd as o">
+      <tr *ngIf="e" style="background-color: grey">
+        <td>{{ i }}</td>
+        <td>{{ a.id }}</td>
+        <td>{{ a.fn }}</td>
+        <td>{{ a.ln }}</td>
+      </tr>
+      <tr *ngIf="o" style="background-color: pink">
+        <td>{{ i }}</td>
+        <td>{{ a.id }}</td>
+        <td>{{ a.fn }}</td>
+        <td>{{ a.ln }}</td>
+      </tr>
+    </ng-container>
+  </table>
+<!-- <app-comp1></app-comp1> -->
+<!-- <app-form1></app-form1> -->
+<router-outlet></router-outlet>

@@ -1,0 +1,81 @@
+<p>comp1 works!</p>
+<div [ngSwitch]="superpower">
+    <div *ngSwitchCase="'superman'">This is the power of superman</div>
+    <div *ngSwitchCase="'Batman'">This is the power of Batman</div>
+    <div *ngSwitchCase="'Fatman'">This is the power of Fatman</div>
+    <div *ngSwitchCase="'Catman'">This is the power of Catman</div>
+    <div *ngSwitchCase="'Ratman'">This is the power of Ratman</div><!--need single quote to show as string-->
+    <!--only superman is printed since superpower = superman-->
+</div>
+<br>
+<div [ngStyle]="{'color':'green'}">This is the Ngstyle structural directive</div>
+<div [ngStyle]="{'color':r}">This is the Ngstyle structural directive</div>
+<div [ngStyle]="{'color':r,'background-color':g}">This is the Ngstyle structural directive</div>
+<div [ngStyle]="{'color':r==='red'?'red':'blue'}">This is the 3rd block</div>
+<!-- if r = red in .ts file then will show color as red, if not blue -->
+
+<h1 class = "c1">{{sentence}}</h1>
+<!-- data binding using template -->
+<div [ngClass]="'c1 c3'">This is an Ngclass import</div>
+<div [ngClass]="class">This is an Ngclass import</div>
+
+<div [ngClass]="{c4:true,c2:false,c1:true}">This is the boolean values</div>
+
+<br>
+
+<div [innerHTML]="sentence">
+
+</div>
+
+<br>
+
+<h1 [title]="h">This is the comp1 head</h1>
+<h2 [style.color]="g">{{h}}</h2>
+
+<br>
+
+<table>
+    <tr>
+        <td> Value 1</td>
+        <td> Value 2</td>
+        <td> Value 3</td>
+    </tr>
+    <tr>
+        <td [attr.colspan] = "val"> Value 4</td>
+        <!-- <td> Value 5</td> -->
+        <td> Value 6</td>
+    </tr>
+</table>
+
+<br>
+
+<button (click)="hello()">hello</button>
+
+<!-- <div (mouseover)="alert()">move mouse over</div> -->
+
+<!-- <div (mouseover)="a(true,'string',133)">mouse over</div> -->
+
+<br>
+
+<input [(ngModel)] = "superpower"><span>{{superpower}}</span>
+
+<p [innerHTML]="superpower"></p>
+
+<br>
+
+<button mat-raised-button color="primary">Primary</button>
+
+
+<h1>Angular Pipes</h1>
+<div>{{lowerCase | lowercase}}</div>
+<div>{{upperCase | uppercase}}</div>
+
+<h1>Date</h1>
+<div>{{date_exm}}</div>
+<!-- computer language -->
+<div>{{date_exm|date}}</div>
+
+<h1>Objects</h1>
+<div>{{obj}}</div>
+<!-- no direct print need formatting -->
+<div>{{obj|json}}</div>
